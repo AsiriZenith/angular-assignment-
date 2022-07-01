@@ -1,0 +1,21 @@
+<div class="box">
+    <h1>Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <input type="text" id="username" formControlName="username" name="username" placeholder="username"
+                class="form-control" autocomplete="off" />
+            <div><label *ngIf="getFormControl('username').errors?.['required']" class="error">Required</label></div>
+            <div><label *ngIf="username_error" class="error">Incorrect username</label></div>
+        </div>
+        <div class="row">
+            <input type="password" id="password" name="password" formControlName="password" required
+                placeholder="password" class="form-control" autocomplete="off" />
+            <div><label *ngIf="getFormControl('password').errors?.['required']" class="error">Required</label></div>
+            <div><label *ngIf="password_error" class="error">Incorrect password</label></div>
+        </div>
+
+        <div class="row ">
+            <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+        </div>
+    </form>
+</div>

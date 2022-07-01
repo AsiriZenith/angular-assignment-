@@ -1,0 +1,22 @@
+<h1 mat-dialog-title class="title-style">{{toDoDetails?.title}}</h1>
+<div class="col">
+  <div class="row">
+    <div class="col-md-4">
+      <span>ID :</span>
+    </div>
+    <div class="col-md-4">
+      <span>{{toDoDetails?.id}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <span>Status :</span>
+    </div>
+    <div class="col-md-4">
+      <span>{{toDoDetails?.completed ? 'Completed' : 'Todo'}}</span>
+    </div>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
