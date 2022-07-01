@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ToDoDetails } from '../model/todo';
+import { ToDoData } from '../model/todo';
 import { TodoService } from '../service/todo.service';
 import { ViewComponent } from './view-component/view-component';
 import { Router } from '@angular/router';
@@ -14,9 +14,9 @@ import { TokenStorageService } from '../service/token-storage.service';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent implements OnInit {
-  toDoDetails: ToDoDetails[] = [];
+  toDoDetails: ToDoData[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  dataSource: MatTableDataSource<ToDoDetails> = new MatTableDataSource();
+  dataSource: MatTableDataSource<ToDoData> = new MatTableDataSource();
   pageNumber: number = 1;
   total = 0;
 
@@ -39,12 +39,12 @@ export class TodoComponent implements OnInit {
     this.TodoService.getTodoDetails().subscribe((data) => {
       this.toDoDetails = data;
       this.total = data.length;
-      this.dataSource = new MatTableDataSource<ToDoDetails>(this.toDoDetails);
+      this.dataSource = new MatTableDataSource<ToDoData>(this.toDoDetails);
       this.dataSource.paginator = this.paginator;
     });
   }
 
-  openDialog(row: ToDoDetails): void {
+  openDialog(row: ToDoData): void {
     this.dialog.open(ViewComponent, {
       width: '400px',
       data: row,

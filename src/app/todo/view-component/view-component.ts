@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ToDoDetails } from 'src/app/model/todo';
+import { ToDoData } from 'src/app/model/todo';
 import { TodoService } from 'src/app/service/todo.service';
 
 @Component({
@@ -9,11 +9,11 @@ import { TodoService } from 'src/app/service/todo.service';
   styleUrls: ['./view-component.css'],
 })
 export class ViewComponent implements OnInit {
-  toDoDetails?: ToDoDetails;
+  toDoDetails?: ToDoData;
 
   constructor(
     private todoService: TodoService,
-    @Inject(MAT_DIALOG_DATA) public data: ToDoDetails
+    @Inject(MAT_DIALOG_DATA) public data: ToDoData
   ) {}
 
   ngOnInit(): void {
